@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript">				
+			$(function(){					
+					checkboxSelected('input[name="me"]','1 2');
+					str="2 2 3 5 6 6"; //这是一字符串 
+					var strs= new Array(); //定义一数组 
+					
+					strs=str.split(" "); //字符分割 
+					for (i=0;i<strs.length ;i++ ) 
+					{ 
+					document.write(strs[i]+"<br/>"); //分割后的字符输出 
+					} 
+			});
+		</script>
+	</head>
+	<body>
+		<label><input type="checkbox" name="me" id="me" value="1" />asdas</label>
+		<label><input type="checkbox" name="me" id="me" value="2" />2</label>
+		<label><input type="checkbox" name="me" id="me" value="3" />3</label>
+	</body>
+	<script type="text/javascript">
+		function checkboxSelected(checkbox,value){
+				var $input=$(checkbox);
+				var arrVal=new Array();
+				arrVal=value.split(' ');
+				for (var i = 0; i < arrVal.length; i++) {
+					var valueMatch=arrVal[i];
+					for (var i = 0; i < $input.length; i++) {
+						var inputVal=$input[i].val();
+						if (inputVal==valueMatch) {
+							$input[i].attr('checked',true);
+						} else{}
+					}
+				}
+			}
+	</script>
+</html>
