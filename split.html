@@ -3,40 +3,47 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<script src="../js/jquery-1.11.0.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script type="text/javascript">				
 			$(function(){					
-					checkboxSelected('input[name="me"]','1 2');
+					isCheckboxSelected('input[name="me"]','2 3');
 					str="2 2 3 5 6 6"; //这是一字符串 
 					var strs= new Array(); //定义一数组 
 					
 					strs=str.split(" "); //字符分割 
 					for (i=0;i<strs.length ;i++ ) 
 					{ 
-					document.write(strs[i]+"<br/>"); //分割后的字符输出 
+					$('body').append("<span>"+strs[i]+"</span><br/>"); //分割后的字符输出 
 					} 
 			});
 		</script>
 	</head>
 	<body>
-		<label><input type="checkbox" name="me" id="me" value="1" />asdas</label>
+		<label><input type="checkbox" name="me" id="me" value="1" />1</label>
 		<label><input type="checkbox" name="me" id="me" value="2" />2</label>
 		<label><input type="checkbox" name="me" id="me" value="3" />3</label>
+		<br>
 	</body>
 	<script type="text/javascript">
-		function checkboxSelected(checkbox,value){
+	//用于从后台的返回值多选的选中
+		function isCheckboxSelected(checkbox,value){ 
 				var $input=$(checkbox);
 				var arrVal=new Array();
 				arrVal=value.split(' ');
+				// alert(isArray(arrVal));
 				for (var i = 0; i < arrVal.length; i++) {
-					var valueMatch=arrVal[i];
-					for (var i = 0; i < $input.length; i++) {
-						var inputVal=$input[i].val();
-						if (inputVal==valueMatch) {
-							$input[i].attr('checked',true);
+					// var valueMatch=arrVal[i];
+					for (var j = 0; j < $input.length; j++) {
+						var inputVal=$input.eq(j).val();
+						if (inputVal==arrVal[i]) {
+							$input.eq(j).attr('checked',true);
 						} else{}
 					}
 				}
 			}
+		//检查是否为数组
+		var isArray = function(obj) { 
+		return Object.prototype.toString.call(obj) === '[object Array]'; 
+		} 
 	</script>
 </html>
