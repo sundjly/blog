@@ -2,9 +2,14 @@ var state='';
 $(function(){
 	$('#btnSubmit').click(function(){
 		state='fbz';
-	SaveGetAjax(state);
+		SaveGetAjax(state);
 	});
-	getCity();getName();
+	getCity();
+	getName();
+	$("#btnCancel").click(function(){
+		state='wfz';
+		SaveGetAjax(state);
+	});
 });
 function getCity(){
 	var url='http://172.20.76.90:8181/Health/app/dsSysArea/queryList';
@@ -41,10 +46,10 @@ function getName(){
 		success:function(data){
 			var response=data.response;
 			if (response) {
-				var data1=data.data;
+				var data=data.data;
 				var option='<option value="">-请选择-</option>';
-				for (var i = 0; i < data1.length; i++) {
-					option+='<option value="'+data1[i].id+'">'+data1[i].name+'</option>';
+				for (var i = 0; i < data.length; i++) {
+					option+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
 				}
 				$('#categoryName').empty().append(option);
 			} else{}
@@ -53,35 +58,41 @@ function getName(){
 	})
 }
 function changeAjax(){
-	var url='';
+	var url='http://172.20.76.90:8181/Health/app/dsServiceDynamicInfo/findAllList';
 	$.ajax({
 		type:"post",
 		url:url,
 		async:false,
 		dataType:'json',
-		data:{},
+		data:{
+			id:1
+		},
 		success:function(data){
 			var response=data.response;
 			if (response) {
-				var data=data.data;
+				var data1=data.data.dsServiceDynamicInfo.products;
+				console.log('传输成功');
+				for (var i = 0; i < data1.length; i++) {
+					getchecked('#categoryName',data1[i].category.name);
+					$('#numberID').val(data1[i].info.id);
+					$('#infoName').val(data1[i].info.name);
+					getchecked('#city',data1[i].info.cityCode);
+					$('#posture').val(data1[i].info.posture);
+					$('#price').val(data1[i].info.price);
+					$('#serviceTotalTime').val(data1[i].info.serviceTotalTime);
+					$('#img').val(data1[i].info.img);
+					$('#description').val(data1[i].info.description);
+					isCheckboxSelected('input[name="serviceSupport"]',data1[i].info.serviceAssurance);//服务保障
+					
+					$('#application').val(data1[i].info.application);
+					$('#impact').val(data1[i].info.impact);
+					$('#way').val(data1[i].info.way);
+					$('#supply').val(data1[i].info.supply);
+					$('#announcements').val(data1[i].info.announcements);
+					$('#orderInformation').val(data1[i].info.orderInformation);
+					$('#commissionRate').val(data1[i].info.commissionRate);
+				}
 				
-				$('#categoryName option:checked').text();
-				$('#numberID').val();
-				$('#infoName').val();
-				$('#city option:checked').val();
-				$('#posture').val();
-				$('#price').val();
-				$('#serviceTotalTime').val();
-				$('#img').val();
-				$('#description').val();
-				$('input[name="serviceSupport"]').val();//服务保障
-				$('#application').val();
-				$('#impact').val();
-				$('#way').val();
-				$('#supply').val();
-				$('#announcements').val();
-				$('#orderInformation').val();
-				$('#commissionRate').val();
 			} else{}
 		},
 		error:function(data){alert('输出失败');}
@@ -97,15 +108,7 @@ function SaveGetAjax(j){
 	var serviceTotalTime=$('#serviceTotalTime').val();
 	var infoImg=$('#img').val();
 	var description=$('#description').val();
-//	var ServiceAssurance=$('input[name="serviceSupport"]').val();//服务保障
-	var $service=$('input[name="serviceSupport"]');//服务保障
-	var ServiceAssurance='';
-	for(var i=0;i <$service.length;i++ ){
-		if($service[i].checked){
-			ServiceAssurance+=""+($service[i].value)+",";
-		}
-	}
-	alert(ServiceAssurance);
+	var ServiceAssurance=$('input[name="serviceSupport"]').val();//服务保障
 	var Application=$('#application').val();
 	var impact=$('#impact').val();
 	var way=$('#way').val();
@@ -160,17 +163,33 @@ function SaveGetAjax(j){
 		error:function(data){alert('传输失败');}
 	})
 }
-
+//后台下拉框选中
 function getchecked(selectId,optionValue){
 	var $option=$(selectId).children();
 	var Value=optionValue;
 	for (var i = 0; i < $option.length; i++) {
-		var $optionVal=$option.eq(i).val();
+		var $optionVal=$option.eq(i).text();
 		if ($optionVal==Value) {
 			$option.eq(i).attr("selected",true);
 		} else{}
 	}
 }
+//用于从后台的返回值多选的选中
+function isCheckboxSelected(checkbox,value){ 
+		var $input=$(checkbox);
+		var arrVal=new Array();
+		arrVal=value.split(' ');
+		// alert(isArray(arrVal));
+		for (var i = 0; i < arrVal.length; i++) {
+			// var valueMatch=arrVal[i];
+			for (var j = 0; j < $input.length; j++) {
+				var inputVal=$input.eq(j).val();
+				if (inputVal==arrVal[i]) {
+					$input.eq(j).attr('checked',true);
+				} else{}
+			}
+		}
+	}
 //清除空格工具类
 function  Clearspace(value)
 {
