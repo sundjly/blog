@@ -92,3 +92,31 @@ function checkInArr(arr, rand) {
         return p;
     }
 }
+
+
+/**
+ * 解析当前页的url，取出传递的参数
+ */
+function getQueryStringsArgs() {
+    // 去得查询的字符串并去掉开头的问号
+    var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+        // 保存数据的对象
+        args = {},
+        // 去得每一项
+        items = (qs.length ? qs.split("&") : []),
+        item = null,
+        name = null,
+        value = null;
+
+    // 逐个将每项解析出来
+    for (var i = 0; i < items.length; i++) {
+        item = items[i].split("=");
+        // 因为查询字符串被编码过的，所以要用decodeURLComponent()解码
+        name = decodeURLComponent(item[0]);
+        value = decodeURLComponent(item[1]);
+        if (name.length) {
+            args[name] = value;
+        }
+    }
+    return args;
+}
