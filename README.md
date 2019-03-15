@@ -1,3 +1,5 @@
-# learnPieces
-#### 记录一些小小的测试代码
-1. 目前学习react中
+# blog
+#### [原来博客地址](http://sundjly.site/)不在维护，新的东西直接发在这里
+
+
+
