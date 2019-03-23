@@ -65,3 +65,14 @@
 3. 可以先为元素设置display：none，操作结束后再把它显示出来，因为display属性为none的元素上进行DOM操作不会引发回流和重绘
 4. 避免频繁读取会引发回流，重绘的属性，如果确定需要多次使用，就用一个变量缓存起来
 5. 对具有复杂动画的元素使用绝对定位，使它脱离文档流，否则会引起父元素及后续元素频繁回流
+
+### 针对动画性能
+一般动画要60帧，人眼不会觉得卡顿。设计动画时长是要注意。
+动画里面主要是对关键帧的设置，这里推荐transform
+
+> 具体的性能测试可以查看 https://www.w3cplus.com/css3/introduction-to-hardware-acceleration-css-animations.html 
+
+
+然后得出结论：
+1. transform 属性不会触发浏览器的 repaint（严格来说，应该是动画期间不会造成重绘，动画开始和结束的时候发生了两次 repaint 操作。可以用Chrome的rendering工具进行repaint和reflow的性能分析），而 left 和 top 则会一直触发 repaint。
+2. 使用GPU可以优化动画效果
