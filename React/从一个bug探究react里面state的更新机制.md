@@ -7,6 +7,7 @@
 // 点击按钮触发roleId改变，发起异步请求请求后端得到数据data
 
 <!-- parent.js-->
+this.state.data来自于ajax请求返回后的数据
 <Child
     roleId={this.state.roleId}
     data={this.state.data}
