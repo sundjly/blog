@@ -1,8 +1,10 @@
 # blog
 #### [原来博客地址](http://sundjly.site/)不在维护，新的东西直接发在这里
 
-## [掘金](https://juejin.im/user/5a1296dd51882512a860eb1a/posts)
+## [掘金](https://juejin.im/user/5a1296dd51882512a860eb1a/posts) 
 
+<font color=gray size=2>[早期 博客园](https://www.cnblogs.com/sundjly/)</font>
+ 
 博客列表
 
 ### react
@@ -16,11 +18,6 @@
 - [从一个bug探究react里面state的更新机制](https://juejin.im/post/5c988b3ae51d452a12197a39)
 
 - [【译】用Chrome开发者工具以及react 16版本分析性能](https://juejin.im/post/5c8a0c45e51d450d85653590)
-
-### js
-
-- [JavaScript引擎Event Loop](js/JavaScript引擎Event Loop.md)
-- [JS Evaluation strategy](js/JS Evaluation strategy.md)
 
 ### 优化
 - [重构-代码优化技巧](重构-代码优化技巧.md)
