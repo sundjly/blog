@@ -8,7 +8,6 @@
 博客列表
 
 ### react
-
 - [【译】更好地设计React组件](https://juejin.im/post/5c90ea99e51d451c2911fb77)
 - [【译】精挑细选的一份React性能问题优化的清单](https://juejin.im/post/5c905d166fb9a070c85902be)
 - [【译】2019年JavaScript开发者应该都在用的9个棒的技巧](https://juejin.im/post/5c97a2226fb9a070e82c1aa1)
@@ -27,6 +26,7 @@
 - [JS(求值策略)EvaluationStrategy.md](js概念解读/JS(求值策略)EvaluationStrategy.md)
 - [js实现一个发布订阅Event](js概念解读/js实现一个发布订阅Event.js)
 - [js闭包](js概念解读/js闭包.md)
+- [【译】理解JavaScript中函数调用和this](https://juejin.im/post/5c8cf7956fb9a049cd5519b3)
 
 ### 工作
 - [nginx基本配置](工作/nginx基本配置.md)
