@@ -37,7 +37,7 @@
 ### 规范
 - [codeReview](规范/codeReview.md)
 - [git提交命名规范](规范/git提交命名规范.md)
-- [react中css模块化](规范/react中css模块化--css modules.md)
+- [react中css模块化](规范/react中css模块化--cssModules.md)
 - [关于React项目的规范总结](规范/关于React项目的规范总结.md)
 
 
