@@ -1,6 +1,6 @@
 [nginx基本配置与参数说明](http://www.nginx.cn/76.html)
 
-
+[前端想要了解的Nginx](https://juejin.im/post/5cae9de95188251ae2324ec3?utm_source=gold_browser_extension)
 ```
 #运行用户
 user nobody;
