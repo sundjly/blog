@@ -39,3 +39,5 @@ git reset --hard A1  //本地回退到A1版本
 git push -f origin dev //强制推送到远程仓库的 dev分支
 ```
 6. 使用`git rebase`避免无谓的合并---https://ihower.tw/blog/archives/3843
+
+7. https://github.com/521xueweihan/git-tips git的奇技淫巧   也可以看一下
