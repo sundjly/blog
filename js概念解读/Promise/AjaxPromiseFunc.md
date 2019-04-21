@@ -1,3 +1,4 @@
+``` 
 /*
  * @Author: Sundjly 
  * @Date: 2018-02-10 22:10:46 
@@ -79,3 +80,4 @@ var Promise = function (fn) {
 
     doResolve.call(promise, fn);
 }
+```

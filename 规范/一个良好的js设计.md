@@ -1,3 +1,4 @@
+```
 /*
  * @author:sundjly
  * @date:2017-1-8
@@ -120,3 +121,4 @@ function getQueryStringsArgs() {
     }
     return args;
 }
+```
