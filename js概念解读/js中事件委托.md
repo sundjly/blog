@@ -33,6 +33,7 @@ tableDom.addEventListener('click', event => {
 function delegate(element, eventType, selector, fn) {
   element.addEventListener(eventType, event => {
     let el = event.target;
+    // 利用了递归，当 target 已经是绑定事件的 DOM 则退出循环  否则依次找到它的上一层级 进行 matches 判断
     while (!el.matches(selector)) {
       if (element === el) {
         el = null;
