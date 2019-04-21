@@ -1,3 +1,5 @@
+来自于[《JavaScript设计模式与开发实践》](https://book.douban.com/subject/26382780/)
+
 ``` 
 const event = {
 
