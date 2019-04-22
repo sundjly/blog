@@ -17,7 +17,7 @@ const throttle = (method, context) => {
     method.call(context);
   },300)
 }
-
+// 严格来说 上面这个类似于防抖的实现  
 const count = () => {
   console.log('函数调用');
 }
