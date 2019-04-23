@@ -41,3 +41,5 @@ git push -f origin dev //强制推送到远程仓库的 dev分支
 6. 使用`git rebase`避免无谓的合并---https://ihower.tw/blog/archives/3843
 
 7. https://github.com/521xueweihan/git-tips git的奇技淫巧   也可以看一下
+
+8. [如何创建公钥](https://gist.github.com/yisibl/8019693)
