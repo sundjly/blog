@@ -80,3 +80,6 @@ export default class StringUtil {
 
 ## 第三方收集
 1. [工作中遇到的一些问题和处理](https://juejin.im/post/5cb6bf9251882545e068b264?utm_source=gold_browser_extension#heading-10)
+
+2. 合格前端系列第七弹-移动端开发踩过的一些坑 - qiangdada的文章 - 知乎
+   https://zhuanlan.zhihu.com/p/30419351
