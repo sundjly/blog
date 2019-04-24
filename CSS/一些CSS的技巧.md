@@ -4,4 +4,11 @@
 - 视差图像 (Parallax Images)  `background-attachment: fixed;`
 - pinteret-style 每个元素的垂直位置都根据其上方元素的高度而变化。
 
-2.
+2. 关于超出点点
+  ```
+  width:150px;/*要显示文字的宽度*/
+  overflow:hidden; /*超出的部分隐藏起来。*/ 
+  white-space:nowrap;/*不显示的地方用省略号...代替*/
+  text-overflow:ellipsis;/* 支持 IE */
+  ```
+  

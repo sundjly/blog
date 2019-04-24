@@ -152,8 +152,12 @@ class MyPromise {
 }
 
 ```
+当然，上面的实现没有解决 then 的链式调用问题 （返回一个 Promise 对象）
+
 
 ## 参考
 1. [集成promise规范，更优雅的书写代码](https://zhuanlan.zhihu.com/p/27641753)
 2. [实现一个完美符合Promise/A+规范的Promise](https://github.com/forthealllight/blog/issues/4)
 3. https://juejin.im/post/5ca1ac256fb9a05e6938d2d1
+4. 实现一个Promise - MaCong的文章 - 知乎
+   https://zhuanlan.zhihu.com/p/62488780
