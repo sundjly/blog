@@ -161,3 +161,5 @@ class MyPromise {
 3. https://juejin.im/post/5ca1ac256fb9a05e6938d2d1
 4. 实现一个Promise - MaCong的文章 - 知乎
    https://zhuanlan.zhihu.com/p/62488780
+   
+5. https://zhuanlan.zhihu.com/p/62834118
