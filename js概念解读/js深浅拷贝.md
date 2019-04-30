@@ -28,12 +28,12 @@ const shallowCopy = function (obj) {
 3. 检查环（也叫循环引用）
 4. 需要忽略原型
 ``` 
-const deepClone = function (obj) {
+const deepClone = function deepClone(obj) {
   if (typeof obj !== 'object') return;
   const newObj = obj instanceof Array ? [] : {};
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
-      newObj[key] = typeof obj[key] === 'object' ? deepclone(obj[key]) : obj[key];
+      newObj[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key];
     }
   }
   return newObj;
