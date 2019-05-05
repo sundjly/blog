@@ -6,17 +6,19 @@
 
 ## 浅拷贝
 ``` 
-const shallowCopy = function (obj) {
-  // 只拷贝对象
-  if (typeof obj !== 'object') return;
-  // 根据obj的类型判断是新建一个数组还是对象
-  const newObj = obj instanceof Array ? [] : {};
-  // 只拷贝自身可枚举属性
-  for (let key of obj) {
-    newObj[key] = obj[key];
-  }
-  return newObj;
-};
+const shallowCopy = function(obj) {
+    // 只拷贝对象
+    if (typeof obj !== 'object') return;
+    // 根据obj的类型判断是新建一个数组还是对象
+    let newObj = obj instanceof Array ? [] : {};
+    // 遍历obj，并且判断是obj的属性才拷贝
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            newObj[key] = obj[key];
+        }
+    }
+    return newObj;
+}
 ```
 
 ## 深拷贝
@@ -39,6 +41,10 @@ const deepClone = function deepClone(obj) {
   return newObj;
 };
 ```
+### 注意 ：for ... of 是用于可迭代对象的，不能用于这里
+可以查看 mdn 中关于[`for...of`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of)
+> for...of语句在可迭代对象（包括 Array，Map，Set，String，TypedArray，arguments 对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句
+
 当然这个很简单，还有一些问题没有解决，像 function、date、regExp 和 error 并没有复制成功，因为它们有特殊的构造函数。
 
 ### 利用 Reflect 去实现
