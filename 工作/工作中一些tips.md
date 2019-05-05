@@ -77,19 +77,27 @@ export default class StringUtil {
 }
 
 ```
-10. 
-```
-  // 取消事件冒泡  在冒泡的地方
-  cancelBubble(e) {
-    if (e.stopPropagation) {
-      e.stopPropagation()
-    } else if (e.cancelBubble) {
-      e.cancelBubble = true
-    }
-  }
-```
+10. [UForm](https://github.com/alibaba/uform)--
+[面向复杂场景的高性能表单解决方案](https://zhuanlan.zhihu.com/p/62927004)
+它引入 Rxjs 将表单联动集中处理，避免在 JSX 中做各种判断；
+使用 JSchema 进行表单描述，再配合 React Hook 可以非常方便的做表单拆分，
+再也不用担心写出一个上千行的表单组件！
+
+
 ## 第三方收集
 1. [工作中遇到的一些问题和处理](https://juejin.im/post/5cb6bf9251882545e068b264?utm_source=gold_browser_extension#heading-10)
 
 2. 合格前端系列第七弹-移动端开发踩过的一些坑 - qiangdada的文章 - 知乎
    https://zhuanlan.zhihu.com/p/30419351
+   
+3. [写好JavaScript条件语句的5条守则:](https://juejin.im/post/5bdef288e51d450d810a89c6)
+    
+    1.多重判断时使用 Array.includes
+
+    2.更少的嵌套，尽早 return
+    
+    3.使用默认参数和解构
+    
+    4.倾向于遍历对象而不是 Switch 语句
+    
+    5.对 所有/部分 判断使用 Array.every & Array.some
