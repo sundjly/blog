@@ -85,11 +85,11 @@ c();//输出 1
 
 图一展示了函数a定义过程是如何创建作用域链的
 
-![image](/images/js1.png)
+![image](../assets/js/js1.png)
 
 图二展示了函数a执行过程产生的活动对象(call object)
 
-![image](/images/js2.png)
+![image](../assets/js/js2.png)
 
 在这其中有个非常重要的内容就是函数的作用域是在定义函数的时候就已经确定，而不是在执行的时候确定。
 
