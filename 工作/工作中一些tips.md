@@ -101,3 +101,7 @@ export default class StringUtil {
     4.倾向于遍历对象而不是 Switch 语句
     
     5.对 所有/部分 判断使用 Array.every & Array.some
+
+4. [灵活运用JavaScript开发技巧](https://juejin.im/post/5cc7afdde51d456e671c7e48?utm_source=gold_browser_extension#heading-8)
+    主要是介绍了各种数据类型工作中的一些常用方法
+5. 
