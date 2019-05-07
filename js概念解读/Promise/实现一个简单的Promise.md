@@ -103,7 +103,7 @@ interface IConstructor {
 }
 
 enum State {
-  PENDDING = "pendding",
+  PENDING = "pending",
   RESOLVED = "resolved",
   REJECTED = "rejected"
 }
@@ -116,13 +116,13 @@ class MyPromise {
   constructor(fn: IConstructor) {
     this.resolvedCallbacks = [];
     this.rejectedCallbacks = [];
-    this.state = State.PENDDING;
+    this.state = State.PENDING;
     this.value = "";
     fn(this.resolve.bind(this), this.reject.bind(this));
   }
 
   resolve(value: any): void {
-    if (this.state === State.PENDDING) {
+    if (this.state === State.PENDING) {
       this.state = State.RESOLVED;
       this.value = value;
       this.resolvedCallbacks.forEach(cb => cb());
@@ -130,7 +130,7 @@ class MyPromise {
   }
 
   reject(value: any): void {
-    if (this.state === State.PENDDING) {
+    if (this.state === State.PENDING) {
       this.state = State.REJECTED;
       this.value = value;
       this.rejectedCallbacks.forEach(cb => cb());
@@ -138,7 +138,7 @@ class MyPromise {
   }
 
   then(resolve: IResolve, reject?: IReject) {
-    if (this.state === State.PENDDING) {
+    if (this.state === State.PENDING) {
       this.resolvedCallbacks.push(resolve);
       this.rejectedCallbacks.push(reject);
     }
@@ -153,13 +153,65 @@ class MyPromise {
 
 ```
 当然，上面的实现没有解决 then 的链式调用问题 （返回一个 Promise 对象）
-
-
+对其中 then 的方法进行改造（简单实现，具体的实现可以查看下面的参考）
+```
+<!---->
+ then(onResolve: IResolve, onReject?: IReject) {
+    let self = this;
+    let promise2: any;
+    switch (this.state) {
+      case State.PENDING:
+        promise2 = new MyPromise(function(resolve, reject) {
+          self.resolvedCallbacks.push(function() {
+            try {
+              let temple = onResolve(self.value);
+              resolve(temple);
+            } catch (e) {
+              reject(e);
+            }
+          });
+          self.rejectedCallbacks.push(function() {
+            try {
+              let temple = onReject(self.value);
+              reject(temple);
+            } catch (e) {
+              reject(e);
+            }
+          });
+        });
+        break;
+        
+      case State.RESOLVED:
+        promise2 = new MyPromise(function(resolve, reject) {
+          try {
+            let temple = onResolve(self.value);
+            resolve(temple);
+          } catch (e) {
+            reject(e);
+          }
+        });
+        break;
+        
+      case State.REJECTED:
+        promise2 = new MyPromise(function(resolve, reject) {
+          try {
+            let temple = onReject(self.value);
+            // 错误的情况返回的也是 resolve
+            resolve(temple);
+          } catch (e) {
+            reject(e);
+          }
+        });
+        break;
+      default:
+    }
+    return promise2;
+  }
+<!---->
+```
 ## 参考
 1. [集成promise规范，更优雅的书写代码](https://zhuanlan.zhihu.com/p/27641753)
 2. [实现一个完美符合Promise/A+规范的Promise](https://github.com/forthealllight/blog/issues/4)
-3. https://juejin.im/post/5ca1ac256fb9a05e6938d2d1
-4. 实现一个Promise - MaCong的文章 - 知乎
-   https://zhuanlan.zhihu.com/p/62488780
-   
-5. https://zhuanlan.zhihu.com/p/62834118
+3. [ES6 简单实现 promise](https://juejin.im/post/5ca1ac256fb9a05e6938d2d1)
+4. [实现一个Promise - MaCong的文章 - 知乎](https://zhuanlan.zhihu.com/p/62488780)
+5. [promise 流程图解析](https://zhuanlan.zhihu.com/p/62834118)
