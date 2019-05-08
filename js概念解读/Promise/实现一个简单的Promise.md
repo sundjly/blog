@@ -9,7 +9,7 @@ promise现在已经标准化了，现在异步都应该是用Promise对象去管
 2. Promise 拥有状态变化，并且状态变化不可逆
 3. Promise 属于微任务
 4. Promise 中的.then 回调是异步的
-5. Promsie 中.then 每次返回的都是一个新的 Promise
+5. Promise 中.then 每次返回的都是一个新的 Promise
 6. Promise 会存储返回值
 
 简易版构造函数实现
