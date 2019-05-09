@@ -47,3 +47,21 @@
         word-spacing:normal;
     }
     ```
+4. svg 受外面颜色的控制添加：
+```
+fill: currentColor;
+```
+
+5. box-sizing 的继承问题：伪类需要单独定义
+```
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+```
+
+
+## 参考
+1. [【前端词典】提高幸福感的 9 个 CSS 技巧](https://juejin.im/post/5cb45a06f265da03474df54e#heading-14)
